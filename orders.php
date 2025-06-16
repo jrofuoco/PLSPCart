@@ -132,6 +132,25 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <span class="label">Payment Method:</span>
                                         <span class="value"><?= ucwords(str_replace('_', ' ', $order['payment_method'])) ?></span>
                                     </div>
+                                    <div class="detail-item">
+                                        <span class="label">Pickup/Receive:</span>
+                                        <span class="value">Pickup available at designated location or delivery to your address</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Pickup/Receive Date:</span>
+                                        <span class="value">
+                                            <?php
+                                            $pickup_date = date('F j, Y', strtotime($order['updated_at'] . ' +5 days')) . ' - ' . date('F j, Y', strtotime($order['updated_at'] . ' +10 days'));
+                                            $receive_date = date('F j, Y', strtotime($order['updated_at'] . ' +10 days')) . ' - ' . date('F j, Y', strtotime($order['updated_at'] . ' +15 days'));
+
+                                            if ($order['payment_method'] === 'cash') {
+                                                echo "Receive: $receive_date";
+                                            } elseif ($order['payment_method'] === 'pay_on_counter') {
+                                                echo "Pickup: $pickup_date";
+                                            }
+                                            ?>
+                                        </span>
+                                    </div>
                                 </div>
 
                                 <div class="order-card__products">
@@ -163,6 +182,12 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                             <div class="order-card__footer">
                                 <a href="order_success.php?order_id=<?= $order['id'] ?>" class="btn btn--secondary">View Details</a>
+                                <?php if ($order['status'] === 'pending'): ?>
+                                    <form method="POST" action="cancel_order.php" style="display:inline;">
+                                        <input type="hidden" name="order_id" value="<?= $order['id'] ?>">
+                                        <button type="submit" class="btn btn--danger">Cancel Order</button>
+                                    </form>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -401,4 +426,4 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 </style>
 
-<?php require_once 'includes/footer.php'; ?> 
+<?php require_once 'includes/footer.php'; ?>

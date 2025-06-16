@@ -42,12 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
             // Insert product
             $stmt = $pdo->prepare("
-                INSERT INTO buy_and_sell (name, description, price, stock, category_id, seller_id, image)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO buy_and_sell (name, description, price, stock, category_id, seller_id, image, approval_status)
+                VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')
             ");
             $stmt->execute([$name, $description, $price, $stock, $category_id, $user_id, $image]);
             
-            $_SESSION['success_message'] = 'Product added successfully!';
+            $_SESSION['success_message'] = 'Product added successfully! Pending admin approval.';
             header('Location: buy-and-sell.php');
             exit();
         } catch (Exception $e) {

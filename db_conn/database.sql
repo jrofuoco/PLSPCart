@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` enum('admin','seller','buyer') NOT NULL DEFAULT 'buyer',
   `student_id` varchar(20) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
+  `approval_status` ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
@@ -93,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `buy_and_sell` (
   `seller_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `featured` tinyint(1) NOT NULL DEFAULT 0,
+  `approval_status` ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
@@ -101,6 +103,15 @@ CREATE TABLE IF NOT EXISTS `buy_and_sell` (
   CONSTRAINT `buy_and_sell_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   CONSTRAINT `buy_and_sell_ibfk_2` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE sell_requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    seller_name VARCHAR(255) NOT NULL,
+    product_name VARCHAR(255) NOT NULL,
+    quantity INT NOT NULL,
+    status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE cart (
     id SERIAL PRIMARY KEY,
@@ -173,4 +184,4 @@ INSERT INTO `products` (`name`, `description`, `price`, `stock`, `category_id`, 
 
 -- CHK Products
 ('CHK Department Shirt', 'Official CHK department shirt with college logo', 800.00, 100, 9, 1, 'CHK SHIRT.jpg', 1),
-('CHK Books', 'Set of essential books for human kinetics students', 2500.00, 15, 9, 1, 'CHK BOOK.jpg', 0); 
+('CHK Books', 'Set of essential books for human kinetics students', 2500.00, 15, 9, 1, 'CHK BOOK.jpg', 0);

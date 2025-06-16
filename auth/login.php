@@ -18,22 +18,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($email) || empty($password)) {
         $error = 'Please fill in all fields';
     } else {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT id, password, role, approval_status FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
-
-            // Redirect based on role
-            if ($user['role'] === 'admin') {
-                header('Location: ../admin/dashboard.php');
+            if ($user['approval_status'] === 'pending') {
+                $error = 'Your account is not yet approved. Please wait for admin approval.';
+            } elseif ($user['approval_status'] === 'rejected') {
+                $error = 'Your account has been rejected. Please contact support for further assistance.';
+                session_destroy();
+                header('Location: login.php?error=' . urlencode($error));
+                exit();
             } else {
-                header('Location: ../index.php');
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = $user['role'];
+
+                // Redirect based on role
+                if ($user['role'] === 'admin') {
+                    header('Location: ../admin/dashboard.php');
+                } else {
+                    header('Location: ../index.php');
+                }
+                exit();
             }
-            exit();
         } else {
             $error = 'Invalid email or password';
         }

@@ -43,6 +43,8 @@ $recent_orders = $pdo->query("
         <a href="edit_product.php" class="btn btn-primary">Edit Products</a>
         <a href="add_product.php" class="btn btn-primary">Add Products</a>
         <a href="manage_orders.php" class="btn btn-primary">Orders</a>
+        <a href="sell_approval.php" class="btn btn-primary">Sell Approval</a>
+        <a href="user_approval.php" class="btn btn-primary">User Approval</a>
     </div>
 
     <!-- Statistics Cards -->

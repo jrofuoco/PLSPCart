@@ -60,7 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
             $pdo->prepare("UPDATE products SET stock = stock - ? WHERE id = ?")->execute([$item['quantity'], $item['product_id']]);
         }
 
+        // Remove cart items from the database after successful checkout
         if (!isset($_GET['buy_now'])) {
+            $stmt = $pdo->prepare("DELETE FROM cart WHERE user_id = ?");
+            $stmt->execute([$user_id]);
             unset($_SESSION['cart']);
         }
 
@@ -88,6 +91,19 @@ if (isset($_GET['buy_now'])) {
         $total += $item['price'] * $item['quantity'];
     }
 }
+
+function getImagePath($imageName) {
+    $productImagePath = "assets/images/product_images/$imageName";
+    $buyAndSellImagePath = "assets/images/buy_and_sell/$imageName";
+
+    if (file_exists($productImagePath)) {
+        return $productImagePath;
+    } elseif (file_exists($buyAndSellImagePath)) {
+        return $buyAndSellImagePath;
+    } else {
+        return "assets/images/product_images/default.jpg"; // Default image
+    }
+}
 ?>
 
 <main class="main">
@@ -100,7 +116,7 @@ if (isset($_GET['buy_now'])) {
                 <div class="cart__items">
                     <?php if ($buy_now_product): ?>
                         <div class="cart__item">
-                            <img src="assets/images/product_images/<?= htmlspecialchars($buy_now_product['image']) ?>" alt="<?= htmlspecialchars($buy_now_product['name']) ?>">
+                            <img src="<?= getImagePath(htmlspecialchars($buy_now_product['image'])) ?>" alt="<?= htmlspecialchars($buy_now_product['name']) ?>">
                             <div class="cart__item-details">
                                 <h3><?= htmlspecialchars($buy_now_product['name']) ?></h3>
                                 <p class="cart__item-price">₱<?= number_format($buy_now_product['price'], 2) ?></p>
@@ -110,7 +126,7 @@ if (isset($_GET['buy_now'])) {
                     <?php else: ?>
                         <?php foreach ($cart as $item): ?>
                             <div class="cart__item">
-                                <img src="<?= asset_url('uploads/products/' . $item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                                <img src="<?= getImagePath(htmlspecialchars($item['image'])) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                                 <div class="cart__item-details">
                                     <h3><?= htmlspecialchars($item['name']) ?></h3>
                                     <p class="cart__item-price">₱<?= number_format($item['price'], 2) ?></p>

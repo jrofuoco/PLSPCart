@@ -180,7 +180,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 Edit
                                             </button>
                                         <?php endif; ?>
-                                        <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');" style="margin: 0;">
+                                        <form method="POST" action="delete_product.php" onsubmit="return confirm('Are you sure you want to delete this item?');" style="margin: 0;">
                                             <input type="hidden" name="id" value="<?= $item['id'] ?>">
                                             <input type="hidden" name="view" value="<?= $view ?>">
                                             <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete">
@@ -350,4 +350,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-<?php include 'includes/footer.php'; ?> 
+<?php include 'includes/footer.php'; ?>

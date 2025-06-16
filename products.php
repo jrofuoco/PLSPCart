@@ -30,6 +30,11 @@ if ($search) {
     $params[] = "%$search%";
 }
 
+// Adjust the query to check for `approval_status` only when viewing `buy-sell`
+if ($view === 'buy-sell') {
+    $where_conditions[] = "approval_status = 'approved'";
+}
+
 $where_clause = $where_conditions ? 'WHERE ' . implode(' AND ', $where_conditions) : '';
 
 // Get total count for pagination
@@ -244,4 +249,4 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </main>
 
-<?php include 'includes/footer.php'; ?> 
+<?php include 'includes/footer.php'; ?>

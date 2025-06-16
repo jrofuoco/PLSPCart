@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start(); // Start output buffering to prevent header issues
 // ✅ Now safe to include header.php (after any redirect attempts)
 require_once '../includes/header.php';
 require_once '../db_conn/database.php';
@@ -45,10 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
 
+        // Redirect with success message
+        $_SESSION['toast_message'] = 'Product added successfully!';
+        header('Location: http://localhost/PLSPCart/admin/add_product.php');
         exit;
     }
 }
 
+ob_end_flush(); // End output buffering
 ?>
 
 <main class="admin-dashboard">

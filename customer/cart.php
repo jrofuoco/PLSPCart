@@ -47,6 +47,18 @@ $total = 0;
 foreach ($cart_items as $item) {
     $total += $item['price'] * $item['quantity'];
 }
+
+// Save cart items to session before redirecting to checkout
+$_SESSION['cart'] = [];
+foreach ($cart_items as $item) {
+    $_SESSION['cart'][] = [
+        'id' => $item['product_id'],
+        'name' => $item['name'],
+        'price' => $item['price'],
+        'quantity' => $item['quantity'],
+        'image' => $item['image']
+    ];
+}
 ?>
 
 <?php include '../includes/header.php'; ?>
