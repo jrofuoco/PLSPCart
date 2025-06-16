@@ -18,18 +18,19 @@
                 <ul class="footer__links">
                     <li><a href="/PLSPCART/">Home</a></li>
                     <li><a href="/PLSPCART/about.php">About Us</a></li>
-                    <li><a href="/PLSPCART/products/">Products</a></li>
-                    <li><a href="/PLSPCART/#contact">Contact</a></li>
+                    <li><a href="/PLSPCART/products.php/">Products</a></li>
+                    <li><a href="/PLSPCART/contact.php">Contact</a></li>
                     <li><a href="/PLSPCART/auth/login.php">Login</a></li>
+                    <li><a href="/PLSPCART/buy-and-sell.php">Buy & Sell</a></li>
                 </ul>
             </div>
             <div class="footer__col">
                 <h4>Help & Support</h4>
                 <ul class="footer__links">
-                    <li><a href="/PLSPCART/faq.php">FAQs</a></li>
-                    <li><a href="/PLSPCART/shipping.php">Shipping Policy</a></li>
-                    <li><a href="/PLSPCART/returns.php">Returns & Refunds</a></li>
-                    <li><a href="/PLSPCART/privacy.php">Privacy Policy</a></li>
+                    <li><a href="/PLSPCART/faqs.php">FAQs</a></li>
+                    <li><a href="/PLSPCART/shipping-policy.php">Shipping Policy</a></li>
+                    <li><a href="/PLSPCART/returns-refunds.php">Returns & Refunds</a></li>
+                    <li><a href="/PLSPCART/privacy-privacy.php">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="footer__col">
