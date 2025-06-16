@@ -1,0 +1,151 @@
+/* Account Page Specific Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.account-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+}
+
+.account-sidebar {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.account-sidebar h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.account-sidebar p {
+    color: #666;
+}
+
+.account-menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.account-menu li {
+    margin-bottom: 10px;
+}
+
+.account-menu a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.account-menu a:hover {
+    text-decoration: underline;
+}
+
+.account-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.account-section {
+    margin-bottom: 20px;
+}
+
+.account-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.order-status.pending {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.order-status.completed {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.order-status.cancelled {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.view-all a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.view-all a:hover {
+    text-decoration: underline;
+}

@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` enum('admin','seller','buyer') NOT NULL DEFAULT 'buyer',
   `student_id` varchar(20) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `approval_status` ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
