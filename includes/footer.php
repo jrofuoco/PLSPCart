@@ -30,7 +30,7 @@
                     <li><a href="/PLSPCART/faqs.php">FAQs</a></li>
                     <li><a href="/PLSPCART/shipping-policy.php">Shipping Policy</a></li>
                     <li><a href="/PLSPCART/returns-refunds.php">Returns & Refunds</a></li>
-                    <li><a href="/PLSPCART/privacy-privacy.php">Privacy Policy</a></li>
+                    <li><a href="/PLSPCART/privacy-policy.php">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="footer__col">

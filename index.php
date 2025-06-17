@@ -36,13 +36,13 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="deals__card">
             <span><i class="ri-cash-line"></i></span>
-            <h4>1.5% cashback</h4>
-            <p>Earn a 5% cashback reward on every purchase you make!</p>
+            <h4>Real Time Order Updates</h4>
+            <p>Easily track your orders from checkout to delivery!</p>
         </div>
         <div class="deals__card">
             <span><i class="ri-calendar-schedule-line"></i></span>
-            <h4>30 day terms</h4>
-            <p>Take advantage of our 30-day payment terms, completely interest-free!</p>
+            <h4>Fast and Hassle Free Checkouts</h4>
+            <p>Easily place your orders in just a few clicks, completely hassle free!</p>
         </div>
         <div class="deals__card">
             <span><i class="ri-money-rupee-circle-line"></i></span>
@@ -139,34 +139,6 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             <?php endforeach; ?>
-        </div>
-    </section>
-
-    <section class="section__container client__container" id="testimonials">
-        <div class="client__content">
-            <h2 class="section__header">What Our Customers Say</h2>
-            <p class="section__description">Read testimonials from our satisfied customers</p>
-        </div>
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="client__card">
-                        <img src="assets/testimonials/user1.jpg" alt="user" />
-                        <p>"Great platform for buying and selling within our campus community!"</p>
-                        <h4>John Doe</h4>
-                        <h5>BSIT Student</h5>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client__card">
-                        <img src="assets/testimonials/user2.jpg" alt="user" />
-                        <p>"Convenient and secure transactions. Highly recommended!"</p>
-                        <h4>Jane Smith</h4>
-                        <h5>BSBA Student</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
         </div>
     </section>
 

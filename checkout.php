@@ -106,6 +106,14 @@ function getImagePath($imageName) {
 }
 ?>
 
+<style>
+    .cart__item img {
+        width: 300px;
+        height: auto;
+        border-radius: 6px;
+    }
+</style>
+
 <main class="main">
     <div class="container">
         <h1 class="page__title">Checkout</h1>
